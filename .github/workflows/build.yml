@@ -19,6 +19,13 @@ jobs:
           pip install --upgrade pip
           pip install "buildozer>=1.5.0" "cython<3.0"
 
+      - name: Fix Android SDK Licenses
+        run: |
+          mkdir -p ~/.android
+          touch ~/.android/repositories.cfg
+          # Lisenziyaları Buildozer-dən əvvəl məcburi qəbul etdiririk
+          yes | sdkmanager --sdk_root=$ANDROID_SDK_ROOT --licenses || true
+
       - name: Build with Buildozer
         run: |
           yes | buildozer android debug
