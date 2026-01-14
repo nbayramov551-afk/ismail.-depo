@@ -18,3 +18,4 @@ p4a.branch = master
 
 [buildozer]
 log_level = 2
+
